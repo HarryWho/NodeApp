@@ -18,9 +18,10 @@ app.set('layout', 'layouts/layout')
 
 // Routes
 const homeRoute = require('./routes/home/index')
+const userRoute = require('./routes/user/user-route')
 
 app.use('/', homeRoute);
-
+app.use('/user', userRoute);
 
 
 // MongoDB Connect and monitor
