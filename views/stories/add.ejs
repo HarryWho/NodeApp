@@ -1,0 +1,29 @@
+<form action="/stories" method="POST">
+  <fieldset>
+    <legend>Add Story</legend>
+    <div class="form-group">
+      <label class="col-form-label" for="inputDefault">Default input</label>
+      <input type="text" class="form-control" placeholder="Default input" id="title" name="title" spellcheck="false" data-ms-editor="true" value="<%= typeof story!='undefined'? story.title: '' %>">
+    </div>
+    <div class="form-group">
+      <label class="col-form-label" for="status">Status</label>
+      <select class="form-select" id="status" name="status">
+          <option value="public">Public</option>
+          <option value="private">Private</option>
+        </select>
+    </div>
+    <div class="form-group">
+      <label class="col-form-label" for="body">Tell your story</label>
+      <textarea class="form-control" id="body" name="body" spellcheck="false" data-ms-editor="true"><%= typeof story!='undefined'? story.body: '' %></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/dashboard" class="btn btn-warning">Cancel</a>
+  </fieldset>
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.17.2/ckeditor.js" integrity="sha512-QuHtmTNLFyCbmk2jGlr0URK0XiNn1G0nHYMaNfbOLQgXBiO6RllC+xFkPO5YnG6zYnRVUj6b5uSXwmJeJgOLBw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  CKEDITOR.replace('body', {
+    plugins: 'wysiwygarea, toolbar, basicstyles, link'
+  })
+</script>

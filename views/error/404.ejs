@@ -1,0 +1,142 @@
+<div class="notfound-page">
+  <div class="wrapper">
+    <h1>404!</h1>
+    <h5>Sorry, Page not found</h5>
+    <p>Which page you are looking for might have been removed had its name changed or is tempoarial unaviable</p>
+    <div class="buttons">
+      <a href="#"><i class="fas fa-home"></i> Go to Home</a>
+      <a href="#"><i class="fas fa-envelope"></i> Contact Us</a>
+    </div>
+    <div class="search-box">
+      <input type="text" name="search" placeholder="Search">
+      <button type="search"><i class="fas fa-search"></i> Search</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .wrapper {
+    width: 70%;
+    margin: 0 auto;
+  }
+  
+  .notfound-page {
+    width: 100%;
+    float: left;
+    background-color: #1a69ae;
+    padding: 60px 15px;
+    text-align: center;
+    height: 100vh;
+  }
+  
+  .notfound-page h1 {
+    color: #eaff72;
+    font-size: 200px;
+    letter-spacing: 10px;
+  }
+  
+  .notfound-page h5 {
+    color: #fff;
+    font-size: 38px;
+    font-weight: normal;
+    letter-spacing: 3px;
+  }
+  
+  .notfound-page p {
+    font-size: 15px;
+    color: #fff;
+    width: 80%;
+    margin: 15px auto 20px;
+    line-height: 22px;
+  }
+  
+  .buttons {
+    margin-top: 40px;
+  }
+  
+  .buttons a {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #3084ce;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 4px;
+    margin: 10px 5px;
+    display: inline-block;
+    transition: 0.5s;
+  }
+  
+  .buttons a:hover {
+    background-color: #3599f1;
+  }
+  
+  .buttons a i {
+    margin-right: 5px;
+  }
+  
+  .search-box {
+    position: relative;
+    width: 80%;
+    margin: 50px auto 0px;
+  }
+  
+  .search-box input {
+    width: 100%;
+    height: 40px;
+    padding: 5px 10px;
+    font-size: 17px;
+    border: none;
+  }
+  
+  .search-box button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 40px;
+    border: none;
+    background-color: #3084ce;
+    color: #fff;
+    font-size: 16px;
+    padding: 0px 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .search-box button:hover {
+    background-color: #3599f1;
+  }
+  /*--Responsive CSS For Small Devices--*/
+  
+  @media (max-width: 1200px) {
+    .notfound-page h1 {
+      font-size: 100px;
+    }
+    .wrapper {
+      width: 90%;
+    }
+    .notfound-page p {
+      width: 100%;
+    }
+    .notfound-page h5 {
+      font-size: 18px;
+    }
+    .buttons a {
+      padding: 8px 8px;
+      font-size: 15px;
+    }
+    .search-box {
+      width: 100%;
+    }
+  }
+</style>
