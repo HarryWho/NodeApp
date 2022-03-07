@@ -7,6 +7,7 @@ const ConnectDB = require('./config/DB');
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
+const methodOverride = require('method-override')
 require('ejs');
 
 
@@ -33,9 +34,12 @@ if (process.env.NODE_ENV === 'development') {
 // static public folder
 app.use(express.static('public'))
 
+// EJS Helpers
+const { formatDate } = require('./helpers/helpers')
+
 // ejs and express layout s set up
 app.use(expressLayouts)
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs', )
 app.set('layout', 'layouts/layout')
 app.set("layout extractStyles", true)
 app.set('layout extractScripts', true)
@@ -54,6 +58,10 @@ app.use(session({
 // Passport Middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+// Method Override
+app.use(methodOverride('_method'))
+
 
 // Routes
 const homeRoute = require('./routes/home/index')

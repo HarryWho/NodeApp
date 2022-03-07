@@ -1,7 +1,7 @@
-<h6>Dashboard</h6>
-<h3>Welcome
+<h2>Dashboard</h2>
+<h4>Welcome
   <%= user.firstName %>
-</h3>
+</h4>
 <p>here are your stories</p>
 
 
@@ -10,7 +10,7 @@
     <thead>
       <tr>
         <th scope="col">Title</th>
-        <th scope="col">Date</th>
+        <th scope="col">Date Created</th>
         <th scope="col">Status</th>
         <th scope="col"></th>
       </tr>
@@ -19,15 +19,26 @@
       <% stories.forEach(story=>{%>
         <tr>
           <td>
-            <a href="/stories/<%=story._id %>">
+            <a href="/stories/show/<%=story._id %>">
               <%= story.title %>
             </a>
           </td>
           <td>
-            <%= story.createdAt.toLocaleDateString() %>
+            <%= helper.formatDate(story.createdAt, 'MMMM Do YYYY, h:mm:ss a') %>
           </td>
           <td>
             <span class="dash-status"><%= story.status %></span>
+          </td>
+
+          <td>
+
+
+            <a href="/stories/edit/<%= story._id %>" class="btn btn-sm btn-info">Edit</a>
+            <form action="/stories/<%= story._id %>?_method=DELETE" method="post" class="d-inline">
+              <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            </form>
+
+
           </td>
           <td></td>
         </tr>

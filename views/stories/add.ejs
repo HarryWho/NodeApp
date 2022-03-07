@@ -1,4 +1,4 @@
-<form action="/stories" method="POST">
+<form action="<%= action %>" method="POST">
   <fieldset>
     <legend>Add Story</legend>
     <div class="form-group">
@@ -8,8 +8,7 @@
     <div class="form-group">
       <label class="col-form-label" for="status">Status</label>
       <select class="form-select" id="status" name="status">
-          <option value="public">Public</option>
-          <option value="private">Private</option>
+        <%- helper.select( story.status, '<option value="public">Public</option>\n\t\t<option value="private">Private</option>') %> 
         </select>
     </div>
     <div class="form-group">
@@ -17,13 +16,33 @@
       <textarea class="form-control" id="body" name="body" spellcheck="false" data-ms-editor="true"><%= typeof story!='undefined'? story.body: '' %></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary"><%= caption %></button>
     <a href="/dashboard" class="btn btn-warning">Cancel</a>
   </fieldset>
 </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.17.2/ckeditor.js" integrity="sha512-QuHtmTNLFyCbmk2jGlr0URK0XiNn1G0nHYMaNfbOLQgXBiO6RllC+xFkPO5YnG6zYnRVUj6b5uSXwmJeJgOLBw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-  CKEDITOR.replace('body', {
-    plugins: 'wysiwygarea, toolbar, basicstyles, link'
-  })
+  var editor1 = CKEDITOR.replace('body', {
+    extraAllowedContent: 'div',
+    // height: 460,
+    removeButtons: 'PasteFromWord'
+  });
+  editor1.on('instanceReady', function() {
+    // Output self-closing tags the HTML4 way, like <br>.
+    this.dataProcessor.writer.selfClosingEnd = '>';
+
+    // Use line breaks for block elements, tables, and lists.
+    var dtd = CKEDITOR.dtd;
+    for (var e in CKEDITOR.tools.extend({}, dtd.$nonBodyContent, dtd.$block, dtd.$listItem, dtd.$tableContent)) {
+      this.dataProcessor.writer.setRules(e, {
+        indent: true,
+        breakBeforeOpen: true,
+        breakAfterOpen: true,
+        breakBeforeClose: true,
+        breakAfterClose: true
+      });
+    }
+    // Start in source mode.
+    this.setMode('source');
+  });
 </script>

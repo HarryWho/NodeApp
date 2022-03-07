@@ -1,0 +1,41 @@
+<h1>Stories</h1>
+<div class="row">
+  <% if(stories.length>0){%>
+    <% stories.forEach(story=>{%>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card mb-3">
+          <div class="card-header bg-primary position-relative">
+
+            <%- helper.editIcon(story.user._id, user._id, story._id)%>
+
+          </div>
+
+          <div class="card-body text-center">
+            <h5 class="card-title">
+              <%= story.title %>
+            </h5>
+            <%= helper.truncate(helper.stripTags(story.body), 150) %>
+              <div class="card-body text-center">
+                <span class="badge rounded-pill bg-secondary">
+                <img class="rounded-circle" width="20px" src="<%= story.user.image %>" alt="Users Image" srcset="">
+                <a href="/stories/user/<%= story.user._id %>">
+                  <%= story.user.displayName%>
+                </a>
+              </span>
+              </div>
+              <a href="/stories/show/<%= story._id %>" class="btn btn-sm btn-info">Read More</a>
+          </div>
+
+          <div class="card-footer">
+            <span class="text-muted">
+            Created on:
+                <%= helper.formatDate(story.createdAt, 'MMMM Do YYYY h:mm:ss a') %>
+            </span>
+          </div>
+        </div>
+      </div>
+      <%})%>
+        <%}else{%>
+          <p>No stories to display</p>
+          <%}%>
+</div>

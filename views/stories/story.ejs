@@ -1,0 +1,17 @@
+<main>
+  <h1 class="mx-auto">
+    <%= story.title %>
+  </h1>
+  <small class="text-muted">Author: <%= story.user.displayName %></small>
+  <div class="fs-5 col-md-8 mx-auto p-5 border">
+
+    <%-story.body-%>
+
+  </div>
+
+  <div class="mb-5">
+    <a href="/dashboard" class="btn btn-primary btn-lg px-4">Dashboard</a>
+  </div>
+
+  <hr class="col-3 col-md-2 mb-5">
+</main>
