@@ -22,6 +22,7 @@ router.get('/public', ensureAuth, async(req, res) => {
     res.render('stories/stories', {
       user: req.user,
       stories: stories,
+      caption: 'By All Authors',
       helper: require('../../helpers/helpers')
     })
   } catch (err) {

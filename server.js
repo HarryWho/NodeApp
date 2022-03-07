@@ -8,6 +8,7 @@ const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const methodOverride = require('method-override')
+const { google, facebook } = require('./config/passport')
 require('ejs');
 
 
@@ -16,7 +17,9 @@ require('ejs');
 dotenv.config({ path: './config/config.env' })
 
 // passport config
-require('./config/passport')(passport)
+const myGooglePassport = google(passport)
+
+const myFaceBookPassport = facebook(passport)
 
 // create the app server
 const app = express()

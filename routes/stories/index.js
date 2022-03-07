@@ -7,11 +7,36 @@ const { ensureAuth } = require('../../middleware/auth');
 // @desc: Show Add Stories Form 
 // @route GET /add
 router.get('/add', ensureAuth, (req, res) => {
-  res.render('stories/add', { user: req.user, action: '/stories', caption: 'Save' });
+  res.render('stories/add', {
+    user: req.user,
+    action: '/stories',
+    caption: 'Save',
+    story: new Story(),
+    helper: require('../../helpers/helpers')
+  });
 })
 
-// @desc: Show Story using :id of story 
-// @route GET /add
+// @desc: Show Stories By Author ID 
+// @route GET /stories/user/:id
+router.get('/user/:id', ensureAuth, async(req, res) => {
+    try {
+      const stories = await Story.find({ user: req.params.id, status: 'public' })
+        .populate({ path: 'user' }).lean()
+      console.log(stories)
+      res.render('stories/stories', {
+        user: req.user,
+        caption: `By ${stories[0].user.displayName}`,
+        stories: stories,
+        helper: require('../../helpers/helpers')
+      });
+    } catch (err) {
+      console.log(err)
+      res.render('error/500')
+    }
+
+  })
+  // @desc: Show Story using :id of story 
+  // @route GET /add
 router.get('/show/:id', ensureAuth, async(req, res) => {
   try {
     const story = await Story.findById(req.params.id)

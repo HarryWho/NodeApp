@@ -1,10 +1,14 @@
-<h1>Stories</h1>
+<div class="h1 text-primary">Stories
+  <small class="text-muted h6">
+        <%= caption %>
+    </small>
+</div>
 <div class="row">
   <% if(stories.length>0){%>
     <% stories.forEach(story=>{%>
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card mb-3">
-          <div class="card-header bg-primary position-relative">
+          <div class="card-header bg-secondary position-relative">
 
             <%- helper.editIcon(story.user._id, user._id, story._id)%>
 
@@ -14,7 +18,7 @@
             <h5 class="card-title">
               <%= story.title %>
             </h5>
-            <%= helper.truncate(helper.stripTags(story.body), 150) %>
+            <%- helper.truncate(helper.stripTags(story.body), 150) %>
               <div class="card-body text-center">
                 <span class="badge rounded-pill bg-secondary">
                 <img class="rounded-circle" width="20px" src="<%= story.user.image %>" alt="Users Image" srcset="">
