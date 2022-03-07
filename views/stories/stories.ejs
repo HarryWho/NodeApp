@@ -10,7 +10,7 @@
         <div class="card mb-3">
           <div class="card-header bg-secondary position-relative">
 
-            <%- helper.editIcon(story.user._id, user._id, story._id)%>
+            <%- editIcon(story.user._id, user._id, story._id)%>
 
           </div>
 
@@ -18,7 +18,7 @@
             <h5 class="card-title">
               <%= story.title %>
             </h5>
-            <%- helper.truncate(helper.stripTags(story.body), 150) %>
+            <%- truncate(stripTags(story.body), 150) %>
               <div class="card-body text-center">
                 <span class="badge rounded-pill bg-secondary">
                 <img class="rounded-circle" width="20px" src="<%= story.user.image %>" alt="Users Image" srcset="">
@@ -33,7 +33,7 @@
           <div class="card-footer">
             <span class="text-muted">
             Created on:
-                <%= helper.formatDate(story.createdAt, 'MMMM Do YYYY h:mm:ss a') %>
+                <%= formatDate(story.createdAt, 'MMMM Do YYYY h:mm:ss a') %>
             </span>
           </div>
         </div>

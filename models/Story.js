@@ -19,6 +19,10 @@ const StorySchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
+  storyId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Comment'
+  },
   createdAt: {
     type: Date,
     default: Date.now

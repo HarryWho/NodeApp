@@ -38,11 +38,20 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.static('public'))
 
 // EJS Helpers
-const { formatDate } = require('./helpers/helpers')
+const { formatDate, truncate, stripTags, editIcon, select } = require('./helpers/helpers')
+
+app.use((req, res, next) => {
+  res.locals.formatDate = formatDate,
+    res.locals.truncate = truncate,
+    res.locals.stripTags = stripTags,
+    res.locals.editIcon = editIcon,
+    res.locals.select = select,
+    next()
+})
 
 // ejs and express layout s set up
 app.use(expressLayouts)
-app.set('view engine', 'ejs', )
+app.set('view engine', 'ejs')
 app.set('layout', 'layouts/layout')
 app.set("layout extractStyles", true)
 app.set('layout extractScripts', true)

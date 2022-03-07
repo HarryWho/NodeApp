@@ -1,4 +1,4 @@
-<form action="<%= action %>" method="POST">
+<form action="<%- action %>" method="POST">
   <fieldset>
     <legend>Add Story</legend>
     <div class="form-group">
@@ -8,7 +8,7 @@
     <div class="form-group">
       <label class="col-form-label" for="status">Status</label>
       <select class="form-select" id="status" name="status">
-        <%- helper.select( story.status, '<option value="public">Public</option>\n\t\t<option value="private">Private</option>') %> 
+        <%- select( story.status, '<option value="public">Public</option>\n\t\t\t<option value="private">Private</option>') %> 
         </select>
     </div>
     <div class="form-group">
