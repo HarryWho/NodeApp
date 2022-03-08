@@ -9,6 +9,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const methodOverride = require('method-override')
 const { google, facebook } = require('./config/passport')
+const WebSocket = require('ws')
 require('ejs');
 
 
@@ -23,6 +24,8 @@ const myFaceBookPassport = facebook(passport)
 
 // create the app server
 const app = express()
+const server = require('http').createServer(app)
+const wss = new WebSocket.Server({ server: server })
 
 // Body parser
 app.use(express.urlencoded({ extended: false }))
@@ -88,8 +91,27 @@ app.use('/stories', storyRoute);
 // connect MongoDB
 ConnectDB()
 
+// Websocket Connection Code
+wss.on('connection', function connection(ws, req) {
+
+  ws.send('Welcome new client');
+
+  ws.on('message', function message(data, isBinary) {
+    console.log('received: %s', data);
+
+    wss.clients.forEach(function each(client) {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(data, { binary: isBinary });
+      }
+    });
+  });
+
+
+});
+
+
 // Start Server
 const PORT = process.env.PORT || 4000
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server runing in ${process.env.NODE_ENV} mode on port ${process.env.PORT}`)
 })
