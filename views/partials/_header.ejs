@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><i class="fa fa-book-reader"></i></a>
+    <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -8,52 +8,29 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/"><i class="fa fa-home"></i> Home
-              <!-- <span class="visually-hidden">(current)</span> -->
+          <a class="nav-link" href="#">Home
+              <span class="visually-hidden">(current)</span>
             </a>
         </li>
-        <% if(typeof user!='undefined'){%>
-          <li class="nav-item">
-            <a class="nav-link" href="/dashboard"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
-          </li>
-          <%}%>
-            <li class="nav-item">
-              <a class="nav-link" href="/public"><i class="fa fa-book-reader"></i> Public Stories</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> User</a>
-              <div class="dropdown-menu">
-                <% if(typeof user=='undefined'){%>
-                  <a class="dropdown-item" href="/login">Login</a>
-                  <%}else{%>
-                    <div class="card-container">
-                      <div class="card mb-3 pt-0">
-                        <div class="card-header">
-                          <h5 class="text-center text-primary">
-                            <%= user.displayName %>
-                          </h5>
-                        </div>
-                        <div class="card-body text-center">
-                          <img class="rounded-circle" src="<%= user.image %>" alt="My Google Image">
-                        </div>
-                        <div class="card-body">
-                          <h6 class="text-muted">Member since:
-                            <%= user.createdAt.toLocaleDateString() %>
-                          </h6>
-                        </div>
-
-                        <div class="card-footer text-muted">
-                          <a class="nav-link btn btn-primary" href="/auth/logout">Logout</a>
-
-                        </div>
-                      </div>
-                    </div>
-                    <%}%>
-                      <!-- <a class="dropdown-item" href="#">Something else here</a> -->
-                      <!-- <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a> -->
-              </div>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </li>
       </ul>
       <form class="d-flex">
         <input class="form-control me-sm-2" type="text" placeholder="Search" spellcheck="false" data-ms-editor="true">
